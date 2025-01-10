@@ -1,0 +1,41 @@
+
+
+<div class="container">
+  <!-- Campo de búsqueda -->
+  <mat-form-field class="search-field">
+    <mat-label>Buscar marca</mat-label>
+    <input
+      matInput
+      [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      placeholder="Ej. Honda"
+      aria-label="Buscar marca"
+    />
+
+  </mat-form-field>
+
+  <!-- Virtual Scroll para mostrar marcas en tarjetas -->
+  <cdk-virtual-scroll-viewport
+    itemSize="120"
+    class="viewport"
+    (scrolledIndexChange)="onScroll()"
+  >
+    <div
+      *ngFor="let make of displayedMakes"
+      class="make-card"
+      (click)="goToBrandDetail(make.Make_ID)"
+    >
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ make.Make_Name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Descubre los mejores modelos de {{ make.Make_Name }}.</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="accent">Ver Detalles</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

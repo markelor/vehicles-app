@@ -1,0 +1,30 @@
+<div class="container">
+  <button mat-button color="accent" class="back-button" (click)="goBack()">
+    ← Volver
+  </button>
+  <h2>Detalle de Marca: {{ brandName }}</h2>
+
+  <section class="info-section">
+    <mat-card class="card">
+      <mat-card-title>Tipos de Vehículos</mat-card-title>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let vt of (vehicleTypes$ | async)">
+            {{ vt.VehicleTypeName }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-title>Modelos Disponibles</mat-card-title>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let model of (models$ | async)">
+            {{ model.Model_Name }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

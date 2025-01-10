@@ -1,0 +1,29 @@
+// Importa las herramientas de theming de Angular Material
+@use '@angular/material' as mat;
+@use '@angular/material/theming' as mat-theme;
+
+// Estilos globales adicionales
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+/* Otros estilos globales */
+
+// Definir las paletas de colores
+$primary-palette: mat-theme.define-palette(mat-theme.$indigo-palette);
+$accent-palette: mat-theme.define-palette(mat-theme.$pink-palette, A200, A100, A400);
+$warn-palette: mat-theme.define-palette(mat-theme.$red-palette);
+
+// Crear el tema personalizado
+$custom-theme: mat-theme.define-light-theme((
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+  ),
+  typography: mat-theme.define-typography-config(),
+));
+
+// Incluir los estilos del tema en todos los componentes
+@include mat-theme.all-component-themes($custom-theme);
